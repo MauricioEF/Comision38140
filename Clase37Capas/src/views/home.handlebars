@@ -1,0 +1,14 @@
+<div>
+    {{#if videogames}}
+    <h1>Últimos juegos agregados</h1>
+    {{#each videogames}}
+    <div>
+        <p>{{this.title}}</p>
+         <p>{{this.price}}</p>
+         <img src={{this.image}}>
+    </div>
+    {{/each}}
+    {{else}}
+    <h1>No hay juegos por mostrar</h1>
+    {{/if}}
+</div>
