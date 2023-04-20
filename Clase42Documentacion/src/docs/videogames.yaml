@@ -1,0 +1,87 @@
+components:
+  schemas:
+    baseVideogame:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por monguito
+        title:
+          type: string
+          description: Nombre del videojuego
+        description:
+          type: string
+          description: Descripción del videojuego
+        price:
+          type: number
+          description: Precio del videojuego
+
+paths:
+  /api/videogames:
+    get:
+      summary: Obtiene los videojuegos de la base de datos
+      tags:
+        - Videogames
+      responses:
+        "200":
+          description: Los videojuegos se obtuvieron correctamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "'success' o 'error' según sea el caso"
+                  payload:
+                    type: array
+                    description: Arreglo con los videojuegos
+                    items:
+                      $ref: '#/components/schemas/baseVideogame'
+    post:
+      summary: Crea un nuevo videojuego en la base de datos
+      tags:
+        - Videogames
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  required: true
+                  type: string
+                  description: Nombre del videojuego
+                description:
+                  required: true
+                  type: string
+                  description: descripción del videojuego
+                code:
+                  required: true
+                  type: string
+                  description: código ÚNICO del videojuego
+                price:
+                  required: true
+                  type: number
+                  description: precio del juego
+                image:
+                  required: true
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          summary: El videojuego se agregó correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: "'success' o 'error' según sea el caso"
+                  payload:
+                    type: array
+                    description: Arreglo con los videojuegos
+                    items:
+                      $ref: '#/components/schemas/baseVideogame'

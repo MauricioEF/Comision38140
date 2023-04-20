@@ -1,0 +1,30 @@
+<div>
+    {{#if videogames}}
+    <h1>Últimos juegos agregados</h1>
+    <div class="container">
+        {{#each videogames}}
+        <div class="videogameCard">
+            <p>{{this.title}}</p>
+            <p>{{this.price}}</p>
+            <img src={{this.image}}>
+            {{#if this.isValidToAdd}}
+                 <a href="http://localhost:8080/api/carts/videogame/{{this._id}}"><button>Agregar al carrito</button></a>
+            {{else}}
+            <button disabled>El juego ya está en el carrito</button>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+    <div>
+        {{#if paginationData.hasPrevPage}}
+        <a href="http://localhost:8080?page={{paginationData.prevPage}}"><button>Anterior</button></a>
+        {{/if}}
+        <p>{{paginationData.page}}</p>
+        {{#if paginationData.hasNextPage}}
+        <a href="http://localhost:8080?page={{paginationData.nextPage}}"><button>Siguiente</button></a>
+        {{/if}}
+    </div>
+    {{else}}
+    <h1>No hay juegos por mostrar</h1>
+    {{/if}}
+</div>
