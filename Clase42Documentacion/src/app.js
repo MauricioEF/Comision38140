@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import { ApolloServer } from '@apollo/server';
+import {expressMiddleware} from '@apollo/server/express4';
 
 import viewsRouter from './routes/views.router.js';
 import sessionsRouter from './routes/sessions.router.js';
@@ -15,6 +17,8 @@ import config from './config/config.js';
 import __dirname from './utils.js';
 import initializePassport from './config/passport.config.js';
 import { usersService } from './dao/index.js';
+import typeDefs from './typeDefs.js';
+import resolvers from './resolvers.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -47,6 +51,16 @@ app.use(cors());
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(specs));
 
 initializePassport();
+
+const apollo = new ApolloServer({
+    typeDefs,
+    resolvers
+})
+
+await apollo.start();
+
+app.use(expressMiddleware(apollo))
+
 
 app.get('/test/init',async (req,res)=>{
     await usersService.drop();
