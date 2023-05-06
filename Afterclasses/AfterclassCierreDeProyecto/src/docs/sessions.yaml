@@ -1,0 +1,6 @@
+paths:
+  /api/sessions/register:
+    post:
+      summary:  Registra un nuevo usuario
+      tags:
+        - Sessions

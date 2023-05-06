@@ -1,0 +1,17 @@
+<div>
+    {{#if games}}
+    <h1>Hola {{name}}, éste es tu carrito actual</h1>
+    {{#each games}}
+    <div>
+        <p>{{this.title}}</p>
+        <p>{{this.price}}</p>
+    </div>
+    {{/each}}
+    <button id="purchaseButton">Agregar a la biblioteca</button>
+    <a href="/">Seguir comprando</a>
+    {{else}}
+    <h1>Aún no hay juegos en tu carrito</h1>
+    <a href="/">Comienza a comprar videojuegos :)</a>
+    {{/if}}
+</div>
+<script src="/js/cart.js"></script>

@@ -1,0 +1,22 @@
+<div>
+    <h1>Bienvenid@, {{user.name}}</h1>
+    <p>rol: {{user.role}}</p>
+    <img src={{user.avatar}} >
+
+    <br/>
+    <p>Historial</p>
+    {{#if events}}
+    <ul>
+        {{#each events}}
+        <li>
+            <div>
+                <p>{{this.event}}</p>
+                <p>{{this.description}}</p>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>Aún no tienes actividad en esta cuenta. Compra algunos juegos, obtén algunos logros o algo :P</p>
+    {{/if}}
+</div>
