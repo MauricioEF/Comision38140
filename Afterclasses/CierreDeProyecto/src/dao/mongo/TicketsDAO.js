@@ -6,11 +6,11 @@ export default class TicketsDAO {
         return ticketModel.find().lean();
     }
 
-    getTicketById = (id) =>{
-        return ticketModel.findOne({_id:id}).lean();
+    getTicketBy = (params) =>{
+        return ticketModel.findOne(params).lean();
     }
 
-    createTicket = (ticket) =>{
+    createTicket = ticket =>{
         return ticketModel.create(ticket);
     }
 }

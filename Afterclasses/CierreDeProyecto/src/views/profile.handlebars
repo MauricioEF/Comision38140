@@ -4,8 +4,8 @@
     <img src={{user.avatar}} >
 
     <br/>
-    <p>Historial</p>
     {{#if events}}
+    <h3>Historial de actividades</h3>
     <ul>
         {{#each events}}
         <li>
@@ -17,6 +17,6 @@
         {{/each}}
     </ul>
     {{else}}
-    <p>Aún no tienes actividad en esta cuenta. Compra algunos juegos, obtén algunos logros o algo :P</p>
+    <h3>Este usuario no ha hecho ninguna actividad en la plataforma</h3>
     {{/if}}
 </div>

@@ -6,12 +6,8 @@ export default class HistoriesDAO {
         return historyModel.find().lean();
     }
 
-    getHistoryById = (id) =>{
-        return historyModel.findOne({_id:id}).lean();
-    }
-
-    getHistoryByUser = (user) =>{
-        return historyModel.findOne({user:user}).lean();
+    getHistoryBy = (params) => {
+        return historyModel.findOne(params).lean();
     }
 
     createHistory = (history) =>{

@@ -10,5 +10,4 @@ router.get('/login',viewsController.login)
 router.get('/profile',executePolicies(["AUTHENTICATED"]),viewsController.profile)
 router.get('/videogamecreator',viewsController.createVideogame);
 router.get('/cart',executePolicies(["USER"]),viewsController.cart);
-router.get('/purchase/:pid',executePolicies(["USER"]),viewsController.purchase);
 export default router;

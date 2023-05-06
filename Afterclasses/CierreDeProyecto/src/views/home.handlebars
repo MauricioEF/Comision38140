@@ -8,14 +8,13 @@
             <p>{{this.price}}</p>
             <img src={{this.image}}>
             {{#if this.inCart}}
-                <button disabled>El juego ya está en el carrito</button>
+                 <button disabled>El juego ya está en el carrito</button>
             {{else}}
             {{#if this.inLibrary}}
-                <button disabled>El juego ya está en tu librería</button>
+                <button disabled>El juego ya está en tu biblioteca</button>
             {{else}}
-            <a href="http://localhost:8080/api/carts/videogame/{{this._id}}"><button>Agregar al carrito</button></a>
+             <a href="http://localhost:8080/api/carts/videogame/{{this._id}}"><button>Agregar al carrito</button></a>
             {{/if}}
-            
             {{/if}}
         </div>
         {{/each}}

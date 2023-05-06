@@ -3,13 +3,13 @@ import { cartsService, historiesService, usersService, videogamesService } from 
 const home = async(req,res)=> {
     const page = req.query.page||1;
     const cartId = req.user.cart;
-    const user = await usersService.getUserBy({_id:req.user.id});
     const pagination = await videogamesService.getVideogames({},page);
     let videogames = pagination.docs;
+    const user = await usersService.getUserBy({_id:req.user.id});
     const cart = await cartsService.getCartById(cartId);
     videogames = videogames.map(videogame =>{
         const existsInCart = cart.games.some(v=>v._id.toString()===videogame._id.toString())
-        const existsInLibrary = user.library.some(g=>g._id.toString()===videogame._id.toString());
+        const existsInLibrary = user.library.some(g=>g._id.toString()===videogame._id.toString())
         return {...videogame,inCart:existsInCart, inLibrary:existsInLibrary}
     })
     const paginationData = {
@@ -30,8 +30,8 @@ const login = (req,res)=>{
     res.render('login')
 }
 
-const profile = async (req,res)=>{
-    const history = await historiesService.getHistoryByUser(req.user.id);
+const profile = async(req,res)=>{
+    const history = await historiesService.getHistoryBy({user:req.user.id});
     res.render('profile',{user:req.user,events:history?history.events:[]})
 }
 const createVideogame = (req,res)=>{
@@ -51,10 +51,6 @@ const cart = async(req,res)=>{
     })
 }
 
-const purchase = (req,res) =>{
-    const code = req.params.pid;
-    res.render('purchase',{code})
-}
 
 export default {
     cart,
@@ -62,6 +58,5 @@ export default {
     home,
     login,
     profile,
-    register,
-    purchase
+    register
 }

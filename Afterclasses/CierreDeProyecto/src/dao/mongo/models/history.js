@@ -5,7 +5,7 @@ const collection = "Histories";
 const schema = new mongoose.Schema({
     user: {
         type:mongoose.SchemaTypes.ObjectId,
-        ref:'Users'
+        ref:'Users',
     },
     events: [
         {
@@ -18,6 +18,6 @@ const schema = new mongoose.Schema({
     ]
 })
 
-const historyModel = mongoose.model(collection,schema);
+const historyModel =  mongoose.model(collection,schema);
 
 export default historyModel;

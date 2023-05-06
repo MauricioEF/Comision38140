@@ -12,13 +12,13 @@ switch(config.app.PERSISTENCE) {
         const {default:MongoVideogames} = await import('./mongo/VideogamesDAO.js');
         const {default:MongoCart} = await import('./mongo/CartsDAO.js');
         const {default:MongoTickets} = await import('./mongo/TicketsDAO.js');
-        const {default:MongoHistories} = await import('./mongo/HistoriesDAO.js');
+        const {default:MongoHistory} = await import('./mongo/HistoriesDAO.js');
 
         usersService = new MongoUser();
         videogamesService = new MongoVideogames();
         cartsService = new MongoCart();
         ticketsService = new MongoTickets();
-        historiesService = new MongoHistories();
+        historiesService = new MongoHistory();
         
         break;
     case "FILESYSTEM":

@@ -1,7 +1,7 @@
 import {fileURLToPath} from 'url';
 import { dirname } from 'path';
 
-export function makeId(length) {
+export const makeid = (length) => {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;
@@ -12,6 +12,7 @@ export function makeId(length) {
     }
     return result;
 }
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

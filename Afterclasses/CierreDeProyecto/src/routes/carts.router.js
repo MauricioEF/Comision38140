@@ -6,6 +6,5 @@ import { executePolicies } from "../middlewares/auth.js";
 const router = Router();
 
 router.get('/videogame/:vid',executePolicies(["USER"]),cartsController.insertGameToCart)
-router.post('/:cid',executePolicies(["USER"]),cartsController.finishPurchase)
-
+router.post('/purchase',executePolicies(['USER']),cartsController.purchase)
 export default router;

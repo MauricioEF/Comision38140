@@ -18,22 +18,14 @@ const schema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref:'Carts'
     },
+    avatar:String,
     library:[
         {
-            videogame:{
-                type: mongoose.SchemaTypes.ObjectId,
+            videogame: {
+                type:mongoose.SchemaTypes.ObjectId,
                 ref:'Videogames'
             },
             purchase: Date
-        }
-    ],
-    avatar:String,
-    friends:[
-        {
-            _id:{
-                type:mongoose.SchemaTypes.ObjectId,
-                ref:'Users'
-            }
         }
     ]
 })

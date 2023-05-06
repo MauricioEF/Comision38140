@@ -12,7 +12,6 @@ import viewsRouter from './routes/views.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 import videogamesRouter from './routes/videogames.router.js';
 import cartsRouter from './routes/carts.router.js';
-import usersRouter from './routes/users.router.js';
 
 import config from './config/config.js';
 import __dirname from './utils.js';
@@ -64,7 +63,8 @@ app.use('/',viewsRouter);
 app.use('/api/sessions/',sessionsRouter);
 app.use('/api/videogames/',videogamesRouter);
 app.use('/api/carts',cartsRouter);
-app.use('/api/users', usersRouter);
+
+app.listen(PORT,()=>console.log(`Listening on ${PORT}`))
 
 
 const apollo = new ApolloServer({
@@ -75,5 +75,3 @@ const apollo = new ApolloServer({
 await apollo.start();
 
 app.use(expressMiddleware(apollo))
-
-app.listen(PORT,()=>console.log(`Listening on ${PORT}`));
